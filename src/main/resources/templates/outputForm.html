@@ -1,0 +1,46 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>天気</title>
+<link rel="stylesheet" th:href="@{/css/default.css}"
+	href="/css/default.css">
+</head>
+<body>
+	<form method="post" action="city">
+		<h1 class="center" th:text="*{name} +',' + ${sys.country}"></h1>
+		<div class="center" th:each="weathers : ${weather}"
+			th:object="${weathers}">
+			<div>
+				<p th:text="'天候： '+ *{main}"></p>
+				<p th:text="*{description}"></p>
+				<img
+					th:src="@{'http://openweathermap.org/img/wn/' + *{icon} + '@2x.png'}">
+			</div>
+		</div>
+		<div class="center" th:object="${main}">
+			<div>
+				<p th:text="'気温: '+ *{temp}+'°'">
+				<p th:text="'気圧: '+ *{pressure}+'hPa'">
+				<p th:text="'湿度: '+ *{humidity}+'%'">
+				<p th:text="'最低気温: '+ *{temp_min}+'°'">
+				<p th:text="'最高気温: '+ *{temp_max}+'°'">
+			</div>
+		</div>
+		<div class="center" th:object="${wind}">
+			<p th:text="'風速 :'+ *{speed} +'m'">
+		</div>
+
+	</form>
+	<form method="post" action="/weather/create">
+		<p class="center">
+			<input class="center" type="submit" value="保存" size="60"></input>
+	</form>
+	<form method="get" action="/weather/create">
+		<p class="center">
+			<input class="center" type="submit" value="過去の気象情報" size="60">
+	</form>
+	<p>
+		<a href="/">戻る</a>
+</body>
+</html>

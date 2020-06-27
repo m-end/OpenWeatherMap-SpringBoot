@@ -1,0 +1,43 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>過去の気象情報</title>
+<link rel="stylesheet" th:href="@{/css/table.css}" href="/css/table.css">
+</head>
+<body>
+<h1 class="center">過去の気象情報</h1>
+
+<table>
+    <thead>
+      <tr>
+        <th>地域</th>
+        <th>天候</th>
+        <th>気温</th>
+        <th>最高気温</th>
+        <th>最低気温</th>
+        <th>湿度</th>
+        <th>気圧</th>
+        <th>風速</th>
+        <th>登録日時</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr th:each="lists : ${list}" th:object="${lists}">
+        <td th:text="*{city}"></td>
+        <td th:text="*{weather}"></td>
+        <td th:text="*{temperature}"></td>
+        <td th:text="*{temperature_high}"></td>
+        <td th:text="*{temperature_low}"></td>
+        <td th:text="*{humidity}"></td>
+        <td th:text="*{pressure}"></td>
+        <td th:text="*{windspeed}"></td>
+        <td th:text="*{date}"></td>
+        </tr>
+      </tbody>
+  </table>
+
+<p>
+<a href="/">戻る</a>
+</body>
+</html>
