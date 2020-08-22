@@ -59,7 +59,7 @@ public class OwmController {
 
 	//例外処理
 	@ExceptionHandler(Exception.class)
-	public String handleException(Exception e, Model model) {
+	public String handleException(Exception e) {
 		System.out.println(e.getClass().getName());
 		e.printStackTrace();
 		return "error";

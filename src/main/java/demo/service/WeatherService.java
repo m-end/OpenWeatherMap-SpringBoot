@@ -22,7 +22,7 @@ public class WeatherService {
 
 	public OwmResponse getResponse(String city) {
 		return restTemplate.getForObject("https://api.openweathermap.org/data/2.5/weather?q=" + city
-						+ "&units=metric&appid={your api key}=ja", OwmResponse.class);
+						+ "&units=metric&appid={yout id }"+"&lang=ja", OwmResponse.class);
 		}
 
 	@Transactional(rollbackOn = { Exception.class })
